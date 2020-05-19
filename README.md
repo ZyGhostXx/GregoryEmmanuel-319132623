@@ -11,14 +11,14 @@
     * taxa_captura
 
 ```sql
-
-
+Select Max(total), Max(hp), Max(ataque), Max(defesa), Max(ataque_especial), Max(defesa_especial), Max(velocidade), Max(taxa_captura), Min(hp), Min(ataque),Min(defesa),Min(ataque_especial), Min(defesa_especial),Min(velocidade),Min(taxa_captura),Min(total) FROM Pokemon;
 ```
 
 2. Quantas cores diferentes possuem os pokémons?
 
 ```sql
 
+Select count(distinct cor)  from Pokemon;
 
 ```
 
@@ -26,6 +26,7 @@
 
 ```sql
 
+Select avg(distinct peso_kg) from Pokemon;
 
 ```
 
@@ -33,6 +34,7 @@
 
 ```sql
 
+Select Sum(altura_m) from Pokemon;
 
 ```
 
@@ -40,6 +42,7 @@
 
 ```sql
 
+select count(nome) from Pokemon;
 
 ```
 
@@ -47,12 +50,14 @@
 
 ```sql
 
+Select avg(altura_m) from Pokemon;
 
 ```
 
 7. Qual é o desvio padrão do valor de HP dos pokémons?
 ```sql
 
+Select Std(hp) from Pokemon;
 
 ```
 
@@ -60,6 +65,7 @@
 
 ```sql
 
+Select Count(nome) from Pokemon where tipo2 is not null;
 
 ```
 
@@ -67,6 +73,7 @@
 
 ```sql
 
+Select Count(Distinct tipo1) from Pokemon;
 
 ```
 
@@ -74,6 +81,7 @@
 
 ```sql
 
+Select Sum(peso_kg) from Pokemon;
 
 ```
 
@@ -81,6 +89,7 @@
 
 ```sql
 
+Select lendario, Count(lendario) from Pokemon group by lendario order by Count(lendario) desc;
 
 ```
 
@@ -88,12 +97,14 @@
 
 ```sql
 
+Select cor, Count(cor) from Pokemon Group by cor order by Count(cor) desc;
 
 ```
 
 13. Qual é a média de peso e altura de cada um dos tipos primários dos pokémons? Ordene os resultados decrescente respectivamente por média de peso e altura.
 ```sql
 
+Select tipo1, avg(peso_kg), avg(altura_m) from Pokemon group by tipo1 order by avg(peso_kg) desc , avg(altura_m) desc;
 
 ```
 
@@ -101,6 +112,7 @@
 
 ```sql
 
+Select cor, avg(taxa_captura) from Pokemon where lendario = true group by cor order by avg(taxa_captura) desc;
 
 ```
 
@@ -108,6 +120,7 @@
 
 ```sql
 
+Select tipo1, avg(taxa_captura) as 'Media' from Pokemon where 'Media_captura' > 100 group by tipo1 order by 'Media_captura' desc;
 
 ```
 
@@ -115,6 +128,7 @@
 
 ```sql
 
+Select cor, avg(total) as 'Em_Media' from Pokemon where lendario = False and 'Media' < 400 group by cor order by avg(total) desc;
 
 ```
 
@@ -122,6 +136,7 @@
 
 ```sql
 
+Select Max(total), geracao from Pokemon group by geracao order by Max(total) desc;
 
 ```
 
@@ -129,6 +144,7 @@
 
 ```sql
 
+Select geracao, Count(lendario) from Pokemon where lendario = true group by geracao order by Count(lendario) desc;
 
 ```
 
@@ -136,6 +152,7 @@
 
 ```sql
 
+Select geracao, Count(tipo2), avg(taxa_captura) from Pokemon where tipo2 is not null group by geracao order by Count(tipo2) desc;
 
 ```
 
@@ -143,5 +160,6 @@
 
 ```sql
 
+Select Count(distinct cor) from Pokemon order by Count(cor) desc;
 
 ```
